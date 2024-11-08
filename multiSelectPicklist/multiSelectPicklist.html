@@ -1,0 +1,16 @@
+<template>
+    <div>
+        <lightning-combobox
+            label={label}
+            value={value}
+            options={_options}
+            onchange={handleChange}
+        ></lightning-combobox>
+    </div>
+    <div>
+        <lightning-pill-container
+            items={items}
+            onitemremove={handleItemRemove}
+        ></lightning-pill-container>
+    </div>
+</template>
