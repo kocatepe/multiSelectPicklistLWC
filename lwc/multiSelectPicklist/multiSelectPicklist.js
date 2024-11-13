@@ -40,7 +40,7 @@ export default class MultiSelectPicklist extends LightningElement {
             this.items.push(pill);
         }
         // Send to parent:
-        this.selectDispatcher(pill);
+        this.eventDispatcher('select', pill);
     }
 
     handleItemRemove(event) {
@@ -50,16 +50,11 @@ export default class MultiSelectPicklist extends LightningElement {
         // Remove from container:
         this.items.splice(index, 1);
         // Send to parent to be removed:
-        this.removeDispatcher(pill);
+        this.eventDispatcher('remove', pill);
     }
 
-    selectDispatcher(pill) {
+    eventDispatcher(eventName, pill) {
         const eventDetail = { label: pill.label, name: pill.name };
-        this.dispatchEvent(new CustomEvent('select', { detail: eventDetail }));
-    }
-
-    removeDispatcher(pill) {
-        const eventDetail = { label: pill.label, name: pill.name };
-        this.dispatchEvent(new CustomEvent('remove', { detail: eventDetail }));
+        this.dispatchEvent(new CustomEvent(eventName, { detail: eventDetail }));
     }
 }
