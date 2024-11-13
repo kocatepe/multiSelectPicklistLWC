@@ -15,7 +15,10 @@ export default class MultiSelectPicklist extends LightningElement {
         this._options = value;
     }
 
-    @api initials; // Use this property to assign initially selected picklist values (nullable)
+    // Use this property to assign initially selected picklist values (nullable).
+    // The objects in the initials array should have two fields: label and value.
+    // The initials array must be a subset of the options array.
+    @api initials;
 
     connectedCallback() {
         if(!this.initials) { return; }
